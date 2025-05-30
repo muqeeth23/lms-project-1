@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecom-rs
+  namespace: dev-env
+  labels:
+    app: fe
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fe
+  template:
+    metadata:
+      labels:
+        app: fe
+    spec:
+      containers:
+      - name: ecom-app
+        image: muqeeth23/mycal:latest
+        ports:
+         - containerPort: 80
+  strategy:
+     type: Recreate
+     
